@@ -93,9 +93,9 @@ public class EmployeeService {
         System.out.print("ID: ");
         int id = scanner.nextInt();
 
-        for (Employee employee : employees) {
-            if (employee.getId() == id) {
-                System.out.println(employee);
+        for (Employee w : employees) {
+            if (w.getId() == id) {
+                System.out.println(w);
                 return;
             }
         }
@@ -111,6 +111,7 @@ public class EmployeeService {
             if (employee.getId() == id) {
                 System.out.print("Name: ");
                 String name = scanner.nextLine();
+                scanner.nextLine();
                 employee.setName(name);
 
                 System.out.print("Salary: ");
