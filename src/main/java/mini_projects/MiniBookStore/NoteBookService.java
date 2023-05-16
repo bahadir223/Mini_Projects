@@ -17,7 +17,18 @@ public class NoteBookService implements ProductService{
     }
 
     @Override
+    public void addStock(int miktar) {
+
+    }
+
+
+    @Override
     public void deleteProduct() {
+
+    }
+
+    @Override
+    public void updateProduct() {
 
     }
 

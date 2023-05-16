@@ -25,35 +25,38 @@ public class BookService implements ProductService {
     //5- ->>işlem menüsü
     @Override
     public void processMenu() {
-        int secim;
+        String secim;
         do {
             System.out.println("*************   Kitap Paneli   ************* ");
             System.out.println("1->Kitapları Listele");
             System.out.println("2->Kitap Ekle");
             System.out.println("3->Kitap Sil");
             System.out.println("4->Yayınevine göre Filtrele ");
+            System.out.println("5->Kitap Güncelle ");
             System.out.println("0->Geri Dön");
             System.out.println("Seçiminiz : ");
 
-            secim = input.nextInt();
+            secim = input.next();
             input.nextLine();
 
             switch (secim) {
-                case 1:
+                case "1":
                     listProduct();
                     break;
-                case 2:
+                case "2":
                     addProduct();
                     break;
-                case 3:
+                case "3":
                     deleteProduct();
                     break;
-                case 4:
+                case "4":
                     System.out.println("Yayınevi : ");
                     String publisher = input.nextLine();
                     filterProducts(publisher);
                     break;
-                case 0:
+                case "5":
+                    updateProduct();
+                case "0":
                     System.out.println("Ana menüye yönlendiriliyorsunuz");
                     for (int i = 0; i <= 10; i++) {
                         try {
@@ -71,7 +74,7 @@ public class BookService implements ProductService {
             }
 
 
-        } while (secim != 0);
+        } while (!secim.equals("0"));
     }
 
     //6- ->>kitapları format ile yazdıralım.
@@ -89,18 +92,29 @@ public class BookService implements ProductService {
     }
     //7- ->>yeni kitap ekleme
 
+    String isbn;
     @Override
     public void addProduct() {
         System.out.println("ISBN : ");
-        String isbn = input.nextLine();
+        isbn = input.nextLine();
         boolean isExist = false;
+
         for (Book w : this.BookList) {
             if (w.getIsbn().equals(isbn)) {
-                System.out.println("Bu kitap sistemde zaten kayıtlı. Lütfen ürün güncellemesi yapınız.");
+                System.out.println("Bu kitap sistemde zaten kayıtlı.");
+                System.out.println("Eklemek istediğiniz miktarı giriniz:");
+                int artirilacakMiktar = input.nextInt();
+                addStock(artirilacakMiktar);
                 isExist = true;
-                break;
+
+
+                this.BookList.forEach(t -> System.out.printf("%-2s | %-20s | %-15s | %-10s | %-7s | %-11s | %-3s\n",
+                        t.getId(), t.getName(), t.getAuthorName(), t.getPublisher(), t.getIsbn(), t.getPrice(), t.getStock()));
+
             }
         }
+
+
         if (!isExist) {
             System.out.println("Kitap Adı:");
             String name = input.nextLine();
@@ -117,12 +131,25 @@ public class BookService implements ProductService {
             Book b = new Book(name, price, stock, author, publisher, isbn);
             this.BookList.add(b);
             System.out.println("Kitap eklendi.");
+            listProduct();
+
         }
-        listProduct();
 
     }
 
-    //updateProduct : stok artırma, azaltma, birim fiyat ödev
+    @Override
+    public void addStock(int miktar) {
+        for (Book w : this.BookList) {
+            if(w.getIsbn().equals(isbn)){
+                int newStock = w.getStock() + miktar;
+                w.setStock(newStock);
+            }
+
+
+
+        }
+    }
+
 
     //8- Kullanıcıdan alınan id ile ürünü bulalım ve listeden silelim.
     @Override
@@ -143,6 +170,28 @@ public class BookService implements ProductService {
         if (!isExist) {
             System.out.println("Girdiğiniz kitap id sistemde kayıtlı değil. Lütfen tekrar deneyiniz.");
         }
+
+    }
+
+    @Override
+    public void updateProduct() {
+
+        System.out.print("Kitap ID: ");
+        int id = input.nextInt();
+
+        for (Book book : BookList) {
+            if (book.getId() == id) {
+                System.out.print("Kitabın Yeni Fiyatı: ");
+                String salary = input.next();
+                book.setPrice(String.valueOf(salary));
+                System.out.println("Kitap birim fiyatı başarıyla güncellendi!");
+                return;
+            }
+        }
+        System.out.println("Kitap bulunamadı!");
+        //updateProduct : stok artırma, azaltma, birim fiyat ödev
+
+
 
     }
 

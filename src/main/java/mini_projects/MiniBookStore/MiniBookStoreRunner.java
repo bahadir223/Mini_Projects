@@ -1,6 +1,6 @@
 package mini_projects.MiniBookStore;
 /*
-Proje: Mini Book Store
+Proje: Mini Book Store...
        Online bir kitap market için ürün yönetim uygulaması yapınız.
        Kitap markette kitap ve defter satışı olacak, ancak ileride yeni ürün çeşidi eklenebilir olmalı.
 

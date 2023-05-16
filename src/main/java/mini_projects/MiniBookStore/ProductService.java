@@ -7,7 +7,9 @@ public interface ProductService {
     void processMenu();
     void listProduct();
     void addProduct();
+    void addStock(int miktar);
     void deleteProduct();
+    void updateProduct();
     void filterProducts(String filter);
 
 
