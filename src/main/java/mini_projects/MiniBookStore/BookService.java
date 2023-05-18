@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-//2-a ->>book ile ilgili işlemler
+//2-a ->>book ile ilgili işlemler yapıldı.
 public class BookService implements ProductService {
 
     Scanner input = new Scanner(System.in);
 
     // 3- ->>Kitapları saklamak için bir list oluştur.
     List<Book> BookList = new ArrayList<>();
+
 
     //4- ->>Başlangıçta sistemde mevcut kitaplar olsun.(test etmek için).
     public BookService() {
