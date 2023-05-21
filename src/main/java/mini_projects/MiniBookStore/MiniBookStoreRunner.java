@@ -12,8 +12,7 @@ Proje: Mini Book Store...
        Kullanıcı ürünleri benzersiz numaralarına göre silebilmeli
        Kullanıcı ürünleri marka(defter) veya yayınevine(kitap) göre filtreleyip listeleyebilmeli.
 
-       NoteBook Service Odev...
-       update product optional ödev...
+
 
 
  */
