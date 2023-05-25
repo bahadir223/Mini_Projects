@@ -15,7 +15,7 @@ public class User {
     }
 
     public User() {     //parametresiz object oluşturmak için kullanıyoruz bunu.
-    }
+    }                   //Default Constructor
 
     public String getName() {
         return name;
