@@ -41,6 +41,7 @@ public class LoginMain {
         UserService u = new UserService();
         String secim;
 
+        //kod exception atmasın diye String aldık.
         do {
             u.showMenu();
             secim = input.next();
