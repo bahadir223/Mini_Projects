@@ -7,7 +7,7 @@ public class Book {
     private String publishYear;
     private String status;
 
-    public Book() {
+    public Book() { //Default Constructor
     }
 
     public Book(String id, String title, String author, String publishYear, String status) {
